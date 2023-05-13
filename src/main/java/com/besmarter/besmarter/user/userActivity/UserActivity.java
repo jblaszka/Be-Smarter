@@ -1,14 +1,12 @@
-package com.besmarter.besmarter.user.token;
+package com.besmarter.besmarter.user.userActivity;
 
 import com.besmarter.besmarter.user.userModel.User;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,23 +17,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Token {
-
+@Table(name = "user_activity")
+public class UserActivity {
     @Id
     @GeneratedValue
     public Integer id;
 
-    @Column(unique = true)
-    public String token;
+    public String activity;
 
-    @Enumerated(EnumType.STRING)
-    public TokenType tokenType = TokenType.BEARER;
+    private Integer points;
 
-    public boolean revoked;
-
-    public boolean expired;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id")
     public User user;
 }

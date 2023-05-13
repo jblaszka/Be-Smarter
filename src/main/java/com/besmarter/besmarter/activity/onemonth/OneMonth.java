@@ -17,5 +17,4 @@ public class OneMonth {
     private Integer id;
     private String activity;
     private String points;
-
 }
