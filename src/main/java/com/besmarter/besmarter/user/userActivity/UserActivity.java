@@ -12,6 +12,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -26,6 +28,15 @@ public class UserActivity {
     public String activity;
 
     private Integer points;
+
+    private String expirationDateString;
+
+    private String expirationTimeString;
+
+    private LocalDateTime expirationTime;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean isDone;
 
     @OneToOne
     @JoinColumn(name = "user_id")

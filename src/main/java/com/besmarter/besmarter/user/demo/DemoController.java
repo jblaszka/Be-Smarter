@@ -15,13 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 public class DemoController {
 
-    @Autowired
-    OneWeekRepository oneWeekRepository;
-
-    public DemoController(OneWeekRepository oneWeekRepository) {
-        this.oneWeekRepository = oneWeekRepository;
-    }
-
     @GetMapping
     public ResponseEntity<String> sayHello() {
         return ResponseEntity.ok("Hello from secured endpoint");

@@ -18,7 +18,6 @@ public interface OneMonthRepository extends JpaRepository<OneMonth, Integer> {
 
     default String getRandomActivity() {
         Long count = countActivity();
-        System.out.println(count);
         Integer randomId = new Random().nextInt(count.intValue()) + 1;
         return findActivityById(randomId);
     }
